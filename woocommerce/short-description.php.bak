@@ -1,0 +1,35 @@
+<?php
+/**
+ * Single product short description
+ *
+ * @author 		WooThemes
+ * @package 	WooCommerce/Templates
+ * @version     1.6.4
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+global $post;
+
+if ( ! $post->post_excerpt ) return;
+?>
+<div itemprop="description">
+	<?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?>
+	
+	
+	<div class="steel-colors">
+		<p><?php echo get_field('colors_intro'); ?></p>
+		<?php 
+		$product_colors = get_field('product_colors');
+		if($product_colors): ?>
+		<ul>
+			<?php while(has_sub_field('product_colors')): ?>
+			<li class="color-selection">
+				<span class="color-swatch" style="background-color: <?php the_sub_field('color_option'); ?>;"></span>
+				<?php the_sub_field('color_name'); ?>
+			</li>
+		<?php endwhile; ?>
+		</ul>
+		<?php endif; ?>
+	</div>
+</div>
