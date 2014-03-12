@@ -1,3 +1,14 @@
+<?php
+
+/*
+*	Available Variables 
+*
+*	$content: Text entered between the shortcode open / close tags. Defaults to null 
+*	$category: Defaults to ""
+*/
+
+$html = "";
+
 $furniture_galleries = get_field('furniture_galleries');
 
 if( $furniture_galleries ) {
@@ -28,3 +39,7 @@ if( $furniture_galleries ) {
 		}
 	$html .= '</ul>';
 }
+
+return $html;
+
+?>
